@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+<style>
+* {
+	text-align: center;
+	color: blue;
+}
+
+input[type=text] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 2px solid red;
+	border-radius: 4px;
+	background-color: #7FC8F8;
+	color: white;
+}
+
+input[type=text]:focus {
+	background-color: lightblue;
+}
+
+.commandButton {
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	background-color: #008CBA;
+}
+</style>
+</h:head> 
+<h:body>
+	<h1>Entrer livre</h1>
+
+	<h:form>
+	<h:inputText id= "titre" value ="#{livre.titre}"
+		a:placeholder="Entrez le titre"/>
+	<h:inputText id= "auteur" value ="#{livre.auteur}"
+		a:placeholder="Auteur"/>
+	<h:inputText id= "annee" value ="#{livre.date}"
+		a:placeholder="Entrez annee sortie"/>
+	<h:inputText id= "prix" value ="#{livre.prix}"
+		a:placeholder="Entrez le prix"/>
+	<h:commandButton action="index" value="Submit" />
+	</h:form>
+</h:body> 
+</html>
