@@ -1,12 +1,17 @@
 package dao;
 
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import entity.Livre;
-
 import utils.HibernateUtil;
 
+@ManagedBean(name = "livreDAO")
 public class LivreDAO {
 	// SAUVEGARDE----------------------------------------------------------------------------
 		public static void persist(Livre livre) {
@@ -23,7 +28,7 @@ public class LivreDAO {
 			}
 			session.close();
 		}
-
+		// La méthode qui suit est appelée dans la classe Livre
 		public void create(Livre livre) {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
@@ -69,5 +74,22 @@ public class LivreDAO {
 				transaction.rollback();
 			}
 		}
+		
+		public static List<Livre> getAll(){
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			
+			Query<Livre> query = session.createQuery("SELECT * FROM livre",Livre.class);
+			List<Livre> listLivre = query.list();
+			transaction.commit();
+			session.close();
+			return listLivre;
+		}
 
 }
+
+
+
+
+
+//LIST System.out.println("Nos livres" + listLivre);

@@ -2,25 +2,28 @@ package entity;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@ManagedBean(name = "livre")
-@SessionScoped
+import dao.LivreDAO;
+
+@ManagedBean(name = "Livre") // METTRE Livre
+@Entity(name = "Livre")
+@Table(name = "Livre")
 public class Livre implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@Column(name = "titre")
 	private String titre;
-
+	@Column(name = "auteur")
 	private String auteur;
-
+	@Column(name = "date")
 	private String date;
-
+	@Column(name = "prix")
 	private int prix;
 
-	public Livre() {
-
-	}
+	
 
 	public Livre(String titre, String auteur, String date, int prix) {
 		this.titre = titre;
@@ -69,5 +72,12 @@ public class Livre implements Serializable {
 		System.out.println("destruction de la classe");
 
 	}
+	
+	//METHODES APPEL DAO ajouter, modifier, delete, read(afficher), getall 
+	public void add() {
+		LivreDAO dao = new LivreDAO();
+		dao.create(this);
+	}
+	// A CONTINUER
 
 }
