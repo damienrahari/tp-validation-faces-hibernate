@@ -43,7 +43,7 @@ input[type=text]:focus {
 </h:head> 
 <h:body>
 	<h1>Entrer livre</h1>
-
+	
 	<h:form>
 	<h:inputText id= "titre" value ="#{livre.titre}"
 		a:placeholder="Entrez le titre"/>
@@ -53,7 +53,9 @@ input[type=text]:focus {
 		a:placeholder="Entrez annee sortie"/>
 	<h:inputText id= "prix" value ="#{livre.prix}"
 		a:placeholder="Entrez le prix"/>
-	<h:commandButton action="index" value="Submit" />
+		
+		<!-- APPEL AU DAO AJOUT -->
+	<h:commandButton action="#{livre.add()}" value="Submit" />
 	</h:form>
 </h:body> 
 </html>
